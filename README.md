@@ -6,19 +6,14 @@
     3、 Run the following commands.
 
 ### For train:
-    ```
     python train.py --config config_xxx.yaml --checkpoint save_name
-    ```
 
 ### For test:
-    ```
     python test.py --config config_xxx.yaml --path checkpoint_path --person test_person
-    ```
 
 ### If you want to eval every epoch, you can run
-    ```
     python train_test.py --config config_xxx.yaml --checkpoint save_name
-    ```
+
 
 ## Two versions
     We announced two versions of our DCGaze: **DCGaze-Base** and **DCGaze-AFU**
