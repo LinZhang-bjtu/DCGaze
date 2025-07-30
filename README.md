@@ -5,17 +5,17 @@
     2、 Modify the "config_xxx.yaml" file
     3、 Run the following commands.
 
-    For train:
+### For train:
     ```
     python train.py --config config_xxx.yaml --checkpoint save_name
     ```
 
-    For test:
+### For test:
     ```
     python test.py --config config_xxx.yaml --path checkpoint_path --person test_person
     ```
 
-    If you want to eval every epoch, you can run
+### If you want to eval every epoch, you can run
     ```
     python train_test.py --config config_xxx.yaml --checkpoint save_name
     ```
