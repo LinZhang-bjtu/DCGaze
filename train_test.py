@@ -5,8 +5,6 @@ from random import random
 import numpy as np
 
 import gtools
-from thop import profile
-from thop import clever_format
 
 import importlib
 import torch
@@ -15,7 +13,6 @@ import yaml
 import ctools
 import config
 from easydict import EasyDict as edict
-import torch.backends.cudnn as cudnn
 from warmup_scheduler import GradualWarmupScheduler
 from models.trainer import Trainer
 
@@ -171,12 +168,12 @@ def test(train, i, net, epoch, test_outfile):
 
     # =============================> Test <=============================
 
-    begin = load.begin_step;
-    end = load.end_step;
+    begin = load.begin_step
+    end = load.end_step
     step = load.steps
 
-    length = len(dataset);
-    accs = 0;
+    length = len(dataset)
+    accs = 0
     count = 0
 
     with torch.no_grad():
@@ -223,16 +220,12 @@ if __name__ == "__main__":
         train_config = train_conf.train
         train_config.params.lr = args.init_lr
         train_config.params.batch_size = args.batch_size
-        train_config.is_mask = True
+        train_config.is_AFU = args.is_AFU
         train_config.person = i
         train_config.device = args.device
         train_config.grade = args.grade
         train_config.a = args.a
         train_config.b = args.b
-        train_config.learn_prompt = args.learn_prompt
-        train_config.adapter = args.adapter
-        train_config.basemodel=args.basemodel
-        train_config.memorybank = args.memorybank
         savepath_all = os.path.join(train_config.save.metapath, train_config.save.folder, checkpoint)
         print(f"=====================>> (Begin) Training params  person:{i} << =======================")
         print(ctools.DictDumps(train_config))

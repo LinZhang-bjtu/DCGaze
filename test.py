@@ -15,7 +15,7 @@ def main(checkpoint_path, train, test):
     print("=======================>(End) Config for test<======================")
     # =================================> Setup <=========================
     reader = importlib.import_module("reader." + test.reader)
-    torch.cuda.set_device(test.device)]
+    torch.cuda.set_device(test.device)
     
     net = Trainer(train)
     net.cuda()
@@ -46,12 +46,12 @@ def main(checkpoint_path, train, test):
 
     # =============================> Test <=============================
 
-    begin = load.begin_step;
-    end = load.end_step;
+    begin = load.begin_step
+    end = load.end_step
     step = load.steps
 
-    length = len(dataset);
-    accs = 0;
+    length = len(dataset)
+    accs = 0
     count = 0
 
     with torch.no_grad():
@@ -86,10 +86,9 @@ def main(checkpoint_path, train, test):
 if __name__ == "__main__":
     # Read model from train config and Test data in test config.
     args = config.get_config()
-    conf = edict(yaml.load(open('config_diap.yaml'), Loader=yaml.FullLoader))
+    conf = edict(yaml.load(open(args.config), Loader=yaml.FullLoader))
     conf.test.person = args.person
     checkpoint_path = args.path
-    train_config.is_AFU = True
 
     print("=======================>(Begin) Config for test<======================")
     print(ctools.DictDumps(test_conf))

@@ -15,23 +15,25 @@ def add_argument_group(name):
 
 # data params
 data_arg = add_argument_group('Data Params')
-data_arg.add_argument('--batch_size', type=int, default=16,  # 最开始是50
-                      help='# of images in each batch of data')
-data_arg.add_argument('--grade', type=int, default=5,
-                      help='numbers of similarity grades')
-data_arg.add_argument('--a', type=float, default=0.1,
-                      help='loss_mask')
-data_arg.add_argument('--b', type=float, default=0.1,
-                      help='loss_align')
+data_arg.add_argument('--batch_size', type=int, default=16, 
+                      help='# number of images in each batch of data')
+data_arg.add_argument('--config', type=int, default="config_diap.yaml", 
+                      help='# config file path')
 
 
 # training params
 train_arg = add_argument_group('Training Params')
+train_arg.add_argument('--grade', type=int, default=5,
+                      help='numbers of similarity grades')
+train_arg.add_argument('--a', type=float, default=0.1,
+                      help='loss_mask')
+train_arg.add_argument('--b', type=float, default=0.1,
+                      help='loss_align')
 train_arg.add_argument('--is_pretrain', type=str2bool, default=True,
                        help='Whether to use the pre-trained model')
 train_arg.add_argument('--is_AFU', type=str2bool, default=True,
                        help='Whether to add clip image feature')
-train_arg.add_argument('--init_lr', type=float, default=0.0001,   # 最开始是0.0001
+train_arg.add_argument('--init_lr', type=float, default=0.0001,  
                        help='Initial learning rate value')
 train_arg.add_argument('--checkpoint', type=str, default='test',
                        help='Savename of the checkpoint')

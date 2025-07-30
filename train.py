@@ -142,11 +142,11 @@ if __name__ == "__main__":
     args = config.get_config()
     checkpoint = "checkpoint-" + args.checkpoint
     for i in range(0, 4):
-        train_conf = edict(yaml.load(open("config_diap.yaml"), Loader=yaml.FullLoader))
+        train_conf = edict(yaml.load(open(args.config), Loader=yaml.FullLoader))
         train_config = train_conf.train
         train_config.params.lr = args.init_lr
         train_config.params.batch_size = args.batch_size
-        train_config.is_AFU = True
+        train_config.is_AFU = args.is_AFU
         train_config.person = i
         train_config.device = args.device
         train_config.grade = args.grade
